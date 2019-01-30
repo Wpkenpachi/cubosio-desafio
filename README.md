@@ -1,0 +1,115 @@
+# Desafio [Cubos IO](https://cubos.io)
+
+# API de Gerenciamento de Clínica
+A Api se encontra dentro da pasta desafio
+
+### Comando para iniciar a api
+Obs: Entrar na pasta `desafio/` <br>
+
+Instalar os pacotes do package.json com o comando:
+```$ npm install```
+
+Depois é só iniciar o servidor
+```$ npm run dev```
+
+## Endpoints:
+### Cadastro de regra de atendimento
+Url: http://localhost:3000/register/scheduling/rule <br>
+Method: POST <br>
+Body: 
+```json
+{
+    "type": "daily",
+    "data": {
+        "day": "25/06/2018",
+        "intervals": [
+            {"start":"09:00" , "end":"17:00"}
+        ]
+    }
+}
+```
+
+Obs: Abaixo modelos para cada tipo requisitado no documento do desafio
+
+- Um dia especifico:
+```json
+{
+    "type": "single-day",
+    "data": {
+        "day": "25/06/2018",
+        "intervals": [
+            {"start":"09:30" , "end":"10:20"},
+            {"start":"10:30" , "end":"11:00"}
+        ]
+    }
+}
+```
+- Diáriamente: 
+```json
+{
+    "type": "daily",
+    "data": {
+        "intervals": [
+            {"start": "09:30", "end": "10:10"}
+        ]
+    }
+}
+```
+- Semanalmente
+```json
+{
+    "type": "weekly",
+    "data": {
+    	"days": [1, 3],
+        "intervals": [
+            {"start": "14:00", "end": "14:00"}
+        ]
+    }
+}
+```
+Obs: A legenda para os days é...
+<ul>
+    <li> 0: domingo </li>
+    <li> 1: segunda </li>
+    <li> 2: terça </li>
+    <li> 3: quarta </li>
+    <li> 4: quinta </li>
+    <li> 5: sexta </li>
+    <li> 6: sábado </li>
+</ul>
+
+
+### Apagar regra
+Url: http://localhost:3000/remove/scheduling/rule/{id} <br>
+Method: POST <br>
+Body: {}
+
+Obs: {id} trata-se do valor de ID da regra que se quer remover
+
+### Listar regras
+Url: http://localhost:3000/remove/scheduling/rules <br>
+Method: GET <br>
+
+### Horários disponíveis
+Url: http://localhost:3000/list/freetime?start=01-01-2019&end=31-01-2019 <br>
+Method: GET <br>
+
+Leve em consideraçäo que em: 
+'?start=01-01-2019&end=31-01-2019'
+
+A query "start" se trata da data de inicio do intervalo de datas
+A query "end" se trata da data final do intervalo de datas
+
+# Plus
+Fiz um rascunho de como ficaria uma aplicativo para consumir essa API
+
+## Comandos para rodar o aplicativo
+- Entrar na pasta `plus/cubos-desafio`
+- Instalar os pacotes do package.json com o comando: ```$ npm install```
+- Iniciar o servidor: ```$ npm run dev```
+- Abrir o browser no endereço: ```http://localhost:8080```
+
+Obs: O servidor da api precisa também estar rodando pro funcionamento da aplicaçäo mobile
+
+
+
