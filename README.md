@@ -21,7 +21,7 @@ Body:
 {
     "type": "daily",
     "data": {
-        "day": "25/06/2018",
+        "day": "25-06-2018",
         "intervals": [
             {"start":"09:00" , "end":"17:00"}
         ]
@@ -36,7 +36,7 @@ Obs: Abaixo modelos para cada tipo requisitado no documento do desafio
 {
     "type": "single-day",
     "data": {
-        "day": "25/06/2018",
+        "day": "25-06-2018",
         "intervals": [
             {"start":"09:30" , "end":"10:20"},
             {"start":"10:30" , "end":"11:00"}
@@ -62,7 +62,7 @@ Obs: Abaixo modelos para cada tipo requisitado no documento do desafio
     "data": {
     	"days": [1, 3],
         "intervals": [
-            {"start": "14:00", "end": "14:00"}
+            {"start": "14:00", "end": "15:30"}
         ]
     }
 }
@@ -77,6 +77,74 @@ Obs: A legenda para os days é...
     <li> 5: sexta </li>
     <li> 6: sábado </li>
 </ul>
+
+### Uma Observaçäo sobre conflito de horários
+Caso seja adicionado um daily com intervalos das 08:00 às 17:00
+E depois adicionado um weekly nas segundas com intervalos das 19:00 às 20:00, ou ainda um single-day em um dia que já esteja sendo cobrido por outra regra, a api irá adicionar esses intervalos todos juntos nessa mesma data. Seguindo o exemplo usado acima teriamos:
+
+```json
+{
+    "type": "single-day",
+    "data": {
+        "day": "07-01-2019",
+        "intervals": [
+            {"start":"08:00" , "end":"09:00"},
+        ]
+    }
+}
+
+{
+    "type": "daily",
+    "data": {
+        "intervals": [
+            {"start": "09:30", "end": "10:10"}
+        ]
+    }
+}
+
+{
+    "type": "weekly",
+    "data": {
+    	"days": [1, 3],
+        "intervals": [
+            {"start": "14:00", "end": "15:00"}
+        ]
+    }
+}
+```
+
+Obs:  07-01-2019 é uma segunda
+Temos aqui um cenário em que:
+
+    Dia 07 existe horario para agendamento das 08:00 às 09:00 por conta de uma regra single-day ( Dia Específico )
+
+    Dia 07 existe horario para agendamento das 09:30 às 10:10 por
+    conta de uma regra daily (Diária)
+
+    Dia 07 existe horario para agendamento das 14:00 às 15:00 por
+    conta de uma regra weekly (Semanal)
+
+
+Teríamos então o seguinte objeto:
+```json
+{
+    "day": "07-01-2019",
+    "intervals": [
+        {
+            "start":"08:00",
+            "end":"09:00"
+        },
+        {
+            "start": "09:30", 
+            "end": "10:10"
+        },
+        {   
+            "start": "14:00", 
+            "end": "15:00"
+        }
+    ]
+}
+```
 
 
 ### Apagar regra
@@ -109,7 +177,7 @@ Fiz um rascunho de como ficaria uma aplicativo para consumir essa API
 - Iniciar o servidor: ```$ npm run dev```
 - Abrir o browser no endereço: ```http://localhost:8080```
 
-Obs: O servidor da api precisa também estar rodando pro funcionamento da aplicaçäo mobile
+Obs: O servidor da api precisa também estar rodando pro funcionamento da aplicação mobile
 
 
 
