@@ -1,0 +1,1 @@
+[{"type":"daily","data":{"intervals":[{"start":"08:00","end":"18:00","button":true}]},"id":"1548822380436138"},{"type":"single-day","data":{"day":"05-01-2019","intervals":[{"start":"10:00","end":"12:00","button":true}]},"id":"1548823114581937"},{"type":"weekly","data":{"days":[0,4],"intervals":[{"start":"18:00","end":"19:00","button":true}]},"id":"1548823828343962"}]
