@@ -165,8 +165,8 @@ Method: GET <br>
 Leve em consideraçäo que em: 
 '?start=01-01-2019&end=31-01-2019'
 
-A query "start" se trata da data de inicio do intervalo de datas
-A query "end" se trata da data final do intervalo de datas
+- A query "start" se trata da data de inicio do intervalo de datas
+- A query "end" se trata da data final do intervalo de datas
 
 # Plus
 Fiz um rascunho de como ficaria uma aplicativo para consumir essa API
