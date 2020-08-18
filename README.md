@@ -3,6 +3,8 @@
 # API de Gerenciamento de Clínica
 A Api se encontra dentro da pasta desafio
 
+Obs: [Descrição do desafio](Desafio.md)
+
 ### Comando para iniciar a api
 Obs: Entrar na pasta `desafio/` <br>
 
